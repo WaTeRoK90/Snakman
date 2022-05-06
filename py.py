@@ -4,7 +4,7 @@ import random as r
 #Задаём начальне значения переменным
 HEIGHT = 1920
 WIDTH = 1000
-SIZE = 50
+SIZE = 100
 reset=0
 stop=0
 gribi=0
@@ -39,7 +39,7 @@ yablokor = pygame.image.load('apple2.png').convert()
 yablokor.set_colorkey(RED)
 gribor = pygame.image.load('mushroom.png').convert()
 gribor.set_colorkey(RED)
-agribor = pygame.image.load('agrib2.png').convert()
+agribor = pygame.image.load('agrib3.png').convert()
 agribor.set_colorkey(RED)
 fireor = pygame.image.load('fire.png').convert()
 fireor.set_colorkey(RED)
@@ -119,6 +119,8 @@ while True:
     #pause
     if status =="pause":
         Pause = font_pause.render(f'Paused', 1, pygame.Color('black'))
+        if space == 1:
+            Pause = font_pause.render(f'Paused', 1, pygame.Color('red'))
         surface.blit(Pause, (820, 97))
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE]:
@@ -247,7 +249,7 @@ while True:
                 mushroom = randrange(SIZE, HEIGHT - SIZE, SIZE), randrange(SIZE, WIDTH - SIZE, SIZE)
                 mush[0]=1
                 grewup=300
-            aspawn = r.randint(1,1)
+            aspawn = r.randint(1,20)
             if aspawn==1 and amush[0]==0:
                 amushroom = randrange(SIZE, HEIGHT - SIZE, SIZE), randrange(SIZE, WIDTH - SIZE, SIZE)
                 amush[0]=1
@@ -354,7 +356,7 @@ while True:
                     x, y = randrange(SIZE, HEIGHT - SIZE, SIZE), randrange(SIZE, WIDTH - SIZE, SIZE)
                     apple = randrange(SIZE, HEIGHT - SIZE, SIZE), randrange(SIZE, WIDTH - SIZE, SIZE)
                     # значения переменным для новой игры
-                    SIZE=50
+                    SIZE=100
                     length = 1
                     snake = [(x, y)]
                     dx, dy = 0, 0
